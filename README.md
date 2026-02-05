@@ -1,3 +1,7 @@
+### This personal website is based by my work [brittanychiang.com](https://brittanychiang.com): [github.com/bchiang7/v4](https://github.com/bchiang7/v4).
+
+The rest of the README is kept as in the original github repository.
+
 <div align="center">
   <img alt="Logo" src="https://raw.githubusercontent.com/bchiang7/v4/main/src/images/logo.png" width="100" />
 </div>
