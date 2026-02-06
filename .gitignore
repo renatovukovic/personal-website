@@ -9,5 +9,6 @@ package-lock.json
 .DS_Store
 
 .vscode/
+.venv/
 
 renatovukovic.github.io
