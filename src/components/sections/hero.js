@@ -61,7 +61,11 @@ const Hero = () => {
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Renato Vukovic.</h2>;
-  const three = <h3 className="big-heading">I am a computer scientist in the field of NLP.</h3>;
+  const three = (
+    <h3 className="big-heading">
+      I am a computer scientist and AI researcher in the field of NLP.
+    </h3>
+  );
   const four = (
     <>
       <p>
@@ -78,7 +82,7 @@ const Hero = () => {
           dialogue systems and machine learning (DSML) group
         </a>
         . Since the start of 2023 I am a PhD student in the DSML group with the topic of automatic
-        dialogue ontology construction for task-oriented dialogue.
+        dialogue ontology construction for task-oriented dialogue using large language models.
       </p>
     </>
   );
