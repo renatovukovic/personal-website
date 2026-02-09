@@ -17,6 +17,8 @@ const variables = css`
     --pink: #f57dff;
     --blue: #57cbff;
 
+    --social-text-color: var(--white);
+
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;
     --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;

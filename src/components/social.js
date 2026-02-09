@@ -22,25 +22,30 @@ const StyledSocialList = styled.ul`
 
     a {
       display: flex;
-      align-items: center;
-      width: 100%; /* Ensure the clickable area covers the whole width */
+      flex-direction: column; /* Stack icon and text vertically */
+      justify-content: flex-start; /* Left align content horizontally */
+      align-items: flex-start; /* Left align content vertically */
+      width: 100%;
       padding: 10px;
-      color: var(--light-slate); /* Default text color */
-      transition: var(--transition); /* Smooth transition for hover effects */
+      color: var(--light-slate);
+      transition: var(--transition);
+      text-align: left; /* Left align text below the icon */
 
       &:hover,
       &:focus {
-        color: var(--green); /* Change color on hover */
+        color: var(--green);
       }
 
       svg {
         width: 20px;
         height: 20px;
-        margin-right: 10px; /* Space between icon and text */
+        margin-right: 0; /* Remove horizontal margin */
+        margin-bottom: 5px; /* Add vertical space between icon and text */
       }
 
       span {
-        font-size: var(--fz-xs); /* Font size for the name */
+        font-size: var(--fz-sm);
+        color: var(--social-text-color);
       }
     }
   }
