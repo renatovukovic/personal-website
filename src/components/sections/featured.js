@@ -126,6 +126,12 @@ const StyledProject = styled.li`
   .project-title {
     color: var(--lightest-slate);
     font-size: clamp(24px, 5vw, 28px);
+    ${({ theme }) => theme.mixins.boxShadow};
+    position: relative;
+    z-index: 2;
+    padding: 25px; /* Add padding similar to description */
+    border-radius: var(--border-radius);
+    background-color: var(--light-navy); /* Add background color similar to description */
 
     @media (min-width: 768px) {
       margin: 0 0 20px;
@@ -133,6 +139,9 @@ const StyledProject = styled.li`
 
     @media (max-width: 768px) {
       color: var(--white);
+      padding: 0; /* Remove padding on smaller screens */
+      background-color: transparent; /* Remove background on smaller screens */
+      box-shadow: none; /* Remove box shadow on smaller screens */
 
       a {
         position: static;
@@ -146,6 +155,7 @@ const StyledProject = styled.li`
           height: 100%;
           top: 0;
           left: 0;
+          background-color: transparent; /* Ensure no background on overlay */
         }
       }
     }
@@ -322,7 +332,7 @@ const Featured = () => {
               tech
               github
               external
-              cta
+              venue
             }
             html
           }
@@ -355,18 +365,22 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, cover, venue } = frontmatter;
             const image = getImage(cover);
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Work</p>
+                    <p className="project-overline">Selected Work</p>
 
                     <h3 className="project-title">
                       <a href={external}>{title}</a>
                     </h3>
+
+                    {venue && (
+                      <p style={{ fontStyle: 'italic', fontSize: 'var(--fz-sm)' }}>{venue}</p>
+                    )}
 
                     <div
                       className="project-description"
@@ -382,17 +396,12 @@ const Featured = () => {
                     )}
 
                     <div className="project-links">
-                      {cta && (
-                        <a href={cta} aria-label="Course Link" className="cta">
-                          Learn More
-                        </a>
-                      )}
                       {github && (
                         <a href={github} aria-label="GitHub Link">
                           <Icon name="GitHub" />
                         </a>
                       )}
-                      {external && !cta && (
+                      {external && (
                         <a href={external} aria-label="External Link" className="external">
                           <Icon name="External" />
                         </a>

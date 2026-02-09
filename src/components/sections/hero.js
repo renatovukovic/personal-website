@@ -37,7 +37,6 @@ const StyledHeroSection = styled.section`
 
   p {
     margin: 20px 0 0;
-    max-width: 540px;
   }
 
   .email-link {
@@ -60,12 +59,8 @@ const Hero = () => {
   }, []);
 
   const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Renato Vukovic.</h2>;
-  const three = (
-    <h3 className="big-heading">
-      I am a computer scientist and AI researcher in the field of NLP.
-    </h3>
-  );
+  const two = <h2 className="big-heading">Renato Sprenger-Vuković.</h2>;
+  const three = <h3 className="big-heading">I am an AI researcher in the field of NLP.</h3>;
   const four = (
     <>
       <p>

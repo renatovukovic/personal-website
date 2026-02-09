@@ -8,36 +8,39 @@ import { Icon } from '@components/icons';
 const StyledSocialList = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Align items to the start for text */
   margin: 0;
   padding: 0;
   list-style: none;
 
-  &:after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 90px;
-    margin: 0 auto;
-    background-color: var(--light-slate);
-  }
-
   li {
+    margin-bottom: 10px; /* Spacing between social links */
+
     &:last-of-type {
-      margin-bottom: 20px;
+      margin-bottom: 0;
     }
 
     a {
+      display: flex;
+      align-items: center;
+      width: 100%; /* Ensure the clickable area covers the whole width */
       padding: 10px;
+      color: var(--light-slate); /* Default text color */
+      transition: var(--transition); /* Smooth transition for hover effects */
 
       &:hover,
       &:focus {
-        transform: translateY(-3px);
+        color: var(--green); /* Change color on hover */
       }
 
       svg {
         width: 20px;
         height: 20px;
+        margin-right: 10px; /* Space between icon and text */
+      }
+
+      span {
+        font-size: var(--fz-xs); /* Font size for the name */
       }
     }
   }
@@ -49,8 +52,9 @@ const Social = ({ isHome }) => (
       {socialMedia &&
         socialMedia.map(({ url, name }, i) => (
           <li key={i}>
-            <a href={url} aria-label={name} title={name} target="_blank" rel="noreferrer">
+            <a href={url} aria-label={name} target="_blank" rel="noreferrer">
               <Icon name={name} />
+              <span>{name}</span>
             </a>
           </li>
         ))}
