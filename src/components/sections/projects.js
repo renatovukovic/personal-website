@@ -165,6 +165,41 @@ const StyledProject = styled.li`
   }
 `;
 
+const StyledTalksSection = styled.section`
+  margin-top: 100px;
+  max-width: 700px;
+
+  h2 {
+    font-size: clamp(24px, 5vw, var(--fz-heading));
+    margin-bottom: 20px;
+  }
+
+  ul {
+    ${({ theme }) => theme.mixins.fancyList};
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 10px;
+      font-size: var(--fz-lg);
+
+      .talk-title {
+        color: var(--lightest-slate);
+        font-weight: 600;
+      }
+
+      .talk-details {
+        color: var(--light-slate);
+        font-size: var(--fz-md);
+      }
+
+      a {
+        ${({ theme }) => theme.mixins.inlineLink};
+      }
+    }
+  }
+`;
+
 const Projects = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -187,13 +222,31 @@ const Projects = () => {
           }
         }
       }
+      talks: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/talks/" } }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              venue
+              location
+              external
+              date
+            }
+          }
+        }
+      }
     }
   `);
 
   const [showMore, setShowMore] = useState(false);
+  const [showMoreTalks, setShowMoreTalks] = useState(false); // NEW state for talks
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
   const revealProjects = useRef([]);
+  const revealTalks = useRef(null); // NEW ref for talks section
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -204,12 +257,20 @@ const Projects = () => {
     sr.reveal(revealTitle.current, srConfig());
     sr.reveal(revealArchiveLink.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
+    if (revealTalks.current) {
+      sr.reveal(revealTalks.current, srConfig());
+    }
   }, []);
 
   const GRID_LIMIT = 6;
+  const TALKS_GRID_LIMIT = 3; // NEW limit for talks
   const projects = data.projects.edges.filter(({ node }) => node);
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = showMore ? projects : firstSix;
+
+  const talks = data.talks.edges.filter(({ node }) => node);
+  const firstThreeTalks = talks.slice(0, TALKS_GRID_LIMIT); // NEW slice for talks
+  const talksToShow = showMoreTalks ? talks : firstThreeTalks; // NEW talks to show
 
   const projectInner = node => {
     const { frontmatter, html } = node;
@@ -305,6 +366,47 @@ const Projects = () => {
       <button className="more-button" onClick={() => setShowMore(!showMore)}>
         Show {showMore ? 'Less' : 'More'}
       </button>
+
+      {/* NEW TALKS SECTION */}
+      {talks.length > 0 && (
+        <StyledTalksSection ref={revealTalks}>
+          <h2>List of Talks</h2>
+          <ul>
+            {talksToShow &&
+              talksToShow.map(({ node }, i) => {
+                const { title, venue, location, external, date } = node.frontmatter;
+                const year = new Date(date).getFullYear();
+
+                return (
+                  <li key={i}>
+                    {external ? (
+                      <a
+                        href={external}
+                        aria-label={`Link to ${title}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="talk-title-link">
+                        <span className="talk-title">{title}</span>
+                      </a>
+                    ) : (
+                      <span className="talk-title">{title}</span>
+                    )}
+                    <span className="talk-details">
+                      {' '}
+                      — {venue} {location && `(${location})`} ({year})
+                    </span>
+                  </li>
+                );
+              })}
+          </ul>
+
+          {talks.length > TALKS_GRID_LIMIT && (
+            <button className="more-button" onClick={() => setShowMoreTalks(!showMoreTalks)}>
+              Show {showMoreTalks ? 'Less' : 'More'} Talks
+            </button>
+          )}
+        </StyledTalksSection>
+      )}
     </StyledProjectsSection>
   );
 };
