@@ -129,6 +129,7 @@ const About = () => {
     'TRL',
     'LLM Evaluation',
     'Prompt Engineering',
+    'Post-Training',
     'Google Cloud Platform',
     'Microsoft Azure',
     'Git',
