@@ -138,6 +138,7 @@ const StyledProject = styled.li`
     }
 
     @media (max-width: 768px) {
+      margin-bottom: 10px; /* Added margin for mobile */
       color: var(--white);
       padding: 0; /* Remove padding on smaller screens */
       background-color: transparent; /* Remove background on smaller screens */
@@ -161,6 +162,10 @@ const StyledProject = styled.li`
     }
   }
 
+  .project-venue {
+    word-break: break-word; /* Ensure long words break and wrap */
+    margin-bottom: 10px; /* Add margin for spacing below venue */
+  }
   .project-description {
     ${({ theme }) => theme.mixins.boxShadow};
     position: relative;
@@ -379,7 +384,11 @@ const Featured = () => {
                     </h3>
 
                     {venue && (
-                      <p style={{ fontStyle: 'italic', fontSize: 'var(--fz-sm)' }}>{venue}</p>
+                      <p
+                        className="project-venue"
+                        style={{ fontStyle: 'italic', fontSize: 'var(--fz-sm)' }}>
+                        {venue}
+                      </p>
                     )}
 
                     <div
