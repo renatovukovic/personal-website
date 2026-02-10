@@ -27,7 +27,8 @@ const StyledJobsSection = styled.section`
 const StyledTabList = styled.div`
   position: relative;
   z-index: 3;
-  width: max-content;
+  min-width: 130px; /* Adjust this value as needed */
+  flex-shrink: 0;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -79,7 +80,17 @@ const StyledTabButton = styled.button`
   font-family: var(--font-mono);
   font-size: var(--fz-xs);
   text-align: left;
-  white-space: nowrap;
+
+  span {
+    ${({ isActive }) =>
+    !isActive &&
+      `
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    `}
+  }
 
   @media (max-width: 768px) {
     padding: 0 15px 2px;
