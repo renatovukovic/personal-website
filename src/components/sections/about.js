@@ -149,6 +149,8 @@ const About = () => {
               supervising undergraduate and graduate research. Furthermore I worked on two
               freelancing projects where I fine-tuned a language model on proprietary data and
               deployed it on company servers and a data analysis project for Spotify podcast data.
+              In my free time, I enjoy a mix of endurance and strength training, gymnastics, and
+              juggling, as well as playing the piano.
             </p>
             <p>Here are a few technologies I’ve been working with recently:</p>
           </div>
