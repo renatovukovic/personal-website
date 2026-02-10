@@ -146,7 +146,7 @@ const About = () => {
               Hi, I am Renato! I am a PhD candidate in Computer Science researching large language
               models, information extraction, and knowledge structuring. I co-authored multiple
               peer-reviewed publications at top-tier venues and I have experienced in teaching and
-              supervising undergraduate and graduate research. Furthermore I worked on two
+              supervising undergraduate and graduate research. Apart from that, I worked on two
               freelancing projects where I fine-tuned a language model on proprietary data and
               deployed it on company servers and a data analysis project for Spotify podcast data.
               In my free time, I enjoy a mix of endurance and strength training, gymnastics, and
