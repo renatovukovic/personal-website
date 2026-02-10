@@ -1,3 +1,6 @@
+### DEPRECATED, use generate_icons.py instead
+###generate black and white logo files
+
 import os
 from pathlib import Path
 from cairosvg import svg2png
@@ -29,7 +32,7 @@ RV_SVG_CONTENT_FAVICON = r"""
 </svg>
 """
 
-FAVICON_DIR = Path("src/images/favicons/")
+FAVICON_DIR = Path("favicons/")
 FAVICON_SPECS = [
     # Favicons
     #{"name": "favicon-16x16.png", "size": 16},
@@ -111,7 +114,7 @@ def generate_favicon_pngs():
 
 def generate_logo_jpg():
     """Generates logo.jpg from the LOGO_SVG_CONTENT_JPG."""
-    output_dir = Path("src/images/")
+    output_dir = Path(".")
     if not output_dir.exists():
         output_dir.mkdir(parents=True, exist_ok=True)
 

@@ -11,4 +11,21 @@ package-lock.json
 .vscode/
 .venv/
 
-renatovukovic.github.io
+# Python-related ignores
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+build/
+dist/
+*.egg-info/
+.project
+.settings
+.ropeproject
+.pytest_cache/
+.coverage
