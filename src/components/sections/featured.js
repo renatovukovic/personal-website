@@ -125,13 +125,24 @@ const StyledProject = styled.li`
 
   .project-title {
     color: var(--lightest-slate);
+
     font-size: clamp(24px, 5vw, 28px);
+
     ${({ theme }) => theme.mixins.boxShadow};
+
     position: relative;
+
     z-index: 2;
+
     padding: 25px; /* Add padding similar to description */
+
     border-radius: var(--border-radius);
+
     background-color: var(--light-navy); /* Add background color similar to description */
+
+    min-width: 0; /* Ensure it can shrink in flex container */
+
+    flex-shrink: 1; /* Allow it to shrink */
 
     @media (min-width: 768px) {
       margin: 0 0 20px;
@@ -139,32 +150,75 @@ const StyledProject = styled.li`
 
     @media (max-width: 768px) {
       margin-bottom: 10px; /* Added margin for mobile */
+
       color: var(--white);
+
       padding: 0; /* Remove padding on smaller screens */
+
       background-color: transparent; /* Remove background on smaller screens */
+
       box-shadow: none; /* Remove box shadow on smaller screens */
+
+      white-space: nowrap; /* Prevent text from wrapping */
+
+      overflow: hidden; /* Hide overflowing content */
+
+      text-overflow: ellipsis; /* Display ellipsis for truncated text */
 
       a {
         position: static;
 
         &:before {
           content: '';
+
           display: block;
+
           position: absolute;
+
           z-index: 0;
+
           width: 100%;
+
           height: 100%;
+
           top: 0;
+
           left: 0;
+
           background-color: transparent; /* Ensure no background on overlay */
         }
       }
     }
+
+    @media (max-width: 480px) {
+      font-size: 22px; /* Further reduce font size for very small screens */
+    }
+
+    @media (max-width: 400px) {
+      font-size: 20px; /* Even smaller font size for extremely small screens */
+    }
   }
 
   .project-venue {
-    word-break: break-word; /* Ensure long words break and wrap */
     margin-bottom: 10px; /* Add margin for spacing below venue */
+
+    min-width: 0; /* Ensure it can shrink in flex container */
+
+    flex-shrink: 1; /* Allow it to shrink */
+
+    white-space: nowrap; /* Prevent text from wrapping */
+
+    overflow: hidden; /* Hide overflowing content */
+
+    text-overflow: ellipsis; /* Display ellipsis for truncated text */
+
+    @media (max-width: 480px) {
+      font-size: var(--fz-xs); /* Further reduce font size for very small screens */
+    }
+
+    @media (max-width: 400px) {
+      font-size: 11px; /* Even smaller font size for extremely small screens */
+    }
   }
   .project-description {
     ${({ theme }) => theme.mixins.boxShadow};
@@ -231,9 +285,19 @@ const StyledProject = styled.li`
     margin-left: -10px;
     color: var(--lightest-slate);
 
+    @media (max-width: 768px) {
+      margin-left: 0; /* Remove negative margin on mobile */
+      flex-wrap: wrap; /* Allow items to wrap */
+      justify-content: flex-start; /* Align items to the start on mobile */
+    }
+
     a {
       ${({ theme }) => theme.mixins.flexCenter};
       padding: 10px;
+
+      @media (max-width: 768px) {
+        margin-right: 10px; /* Add spacing between icons on mobile */
+      }
 
       &.external {
         svg {

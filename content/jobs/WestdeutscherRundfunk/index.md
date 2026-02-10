@@ -1,7 +1,7 @@
 ---
 date: '2025-01'
 title: 'Freelance Data Analyst'
-company: 'Westdeutscher Rundfunk'
+company: 'WDR'
 location: 'Remote'
 range: 'Jan 2025 – May 2025'
 url: 'https://www1.wdr.de'

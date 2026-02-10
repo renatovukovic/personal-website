@@ -74,9 +74,9 @@ const Hero = () => {
           href="https://www.cs.hhu.de/en/research-groups/dialog-systems-and-machine-learning"
           target="_blank"
           rel="noreferrer">
-          dialogue systems and machine learning (DSML) group
+          dialogue systems and machine learning (DSML) group.
         </a>
-        . Since the start of 2023 I am a PhD student in the DSML group with the topic of automatic
+        Since the start of 2023 I am a PhD student in the DSML group with the topic of automatic
         dialogue ontology construction for task-oriented dialogue using large language models.
       </p>
     </>

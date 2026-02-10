@@ -1,7 +1,7 @@
 ---
 date: '2026-01'
 title: 'Doctoral Researcher'
-company: 'Heinrich Heine University Düsseldorf'
+company: 'University of Düsseldorf'
 location: 'Düsseldorf, Germany'
 range: 'Jan 2023 – Jan 2027'
 url: 'https://www.hhu.de/'
