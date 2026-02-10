@@ -82,14 +82,17 @@ const StyledTabButton = styled.button`
   text-align: left;
 
   span {
+    display: block; // Keep display block for consistent layout
     ${({ isActive }) =>
-    !isActive &&
-      `
-      display: block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    `}
+    isActive
+      ? `
+          white-space: normal; // Allow wrapping for active tabs
+        `
+      : `
+          white-space: nowrap; // Prevent wrapping for inactive tabs
+          overflow: hidden;
+          text-overflow: ellipsis;
+        `}
   }
 
   @media (max-width: 768px) {
