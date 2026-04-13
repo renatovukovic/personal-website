@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Icon } from '@components/icons';
-import { socialMedia } from '@config';
+import { socialMedia, email } from '@config';
 
 const StyledFooter = styled.footer`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -67,6 +67,40 @@ const StyledCredit = styled.div`
   }
 `;
 
+const StyledLegalNotice = styled.div`
+  color: var(--slate);
+  font-family: var(--font-mono);
+  font-size: var(--fz-xxs);
+  line-height: 1.5;
+  margin-top: 30px;
+  max-width: 600px;
+  border-top: 1px solid var(--lightest-navy);
+  padding-top: 20px;
+
+  .legal-section {
+    margin-bottom: 15px;
+  }
+
+  .legal-title {
+    font-weight: 600;
+    color: var(--lightest-slate);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  p {
+    margin: 2px 0;
+  }
+
+  a {
+    color: var(--green);
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
 const Footer = () => {
   const [githubInfo, setGitHubInfo] = useState({
     stars: null,
@@ -122,6 +156,53 @@ const Footer = () => {
           )}
         </a>
       </StyledCredit>
+
+      <StyledLegalNotice>
+        <div className="legal-section">
+          <div className="legal-title">Impressum</div>
+          <p>Renato Sprenger-Vukovic</p>
+          <p>Universitätsstraße 1</p>
+          <p>40225 Düsseldorf</p>
+          <p>
+            E-Mail: <a href={`mailto:${email}`}>{email}</a>
+          </p>
+        </div>
+
+        <div className="legal-section">
+          <div className="legal-title">Legal Notice & GDPR</div>
+          <p>
+            This website complies with the Digital Services Act (DSA) and the General Data
+            Protection Regulation (GDPR).
+          </p>
+          <p>
+            <strong>Analytics:</strong> This website uses Google Analytics to analyze web traffic.
+            Your IP address is anonymized before being stored. You can prevent the collection of
+            your data by Google Analytics by using the{' '}
+            <a
+              href="https://tools.google.com/dlpage/gaoptout"
+              target="_blank"
+              rel="noopener noreferrer">
+              Google Analytics Opt-out Browser Add-on
+            </a>
+            .
+          </p>
+          <p>
+            You have the right to request information about your stored personal data, its origin,
+            recipients, and the purpose of data processing at any time free of charge. You also have
+            the right to request the correction, blocking, or deletion of this data.
+          </p>
+        </div>
+
+        <div className="legal-section">
+          <div className="legal-title">Disclaimer</div>
+          <p>
+            The contents of this website were created with the greatest care. However, I cannot
+            guarantee the accuracy, completeness, or topicality of the content. As a service
+            provider, I am responsible for my own content on these pages according to the general
+            laws.
+          </p>
+        </div>
+      </StyledLegalNotice>
     </StyledFooter>
   );
 };
